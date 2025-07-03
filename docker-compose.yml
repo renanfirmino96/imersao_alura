@@ -1,0 +1,17 @@
+services:
+  # Serviço da sua aplicação Python/FastAPI
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual (.).
+    build: .
+    # Nome do container para facilitar a identificação.
+    container_name: imersao_alura
+    # Mapeia a porta 8000 do host para a porta 8000 do container,
+    # que é a porta que o uvicorn está usando no seu Dockerfile.
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual no container para que as alterações no código
+    # sejam refletidas em tempo real, funcionando com o --reload do uvicorn.
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1    
